@@ -11,10 +11,11 @@ import (
 	"github.com/fatih/color"
 )
 
+const symbol = "░"
+
 // PrintTitle - prints nicely formated title
 func PrintTitle(title string) {
 	length := len(title) + 4
-	symbol := "░"
 	color.Set(color.FgHiGreen)
 
 	fmt.Println()
@@ -30,17 +31,26 @@ func PrintTitle(title string) {
 func PrintSubTitle(subtitle string) {
 	fmt.Println()
 	fmt.Println(subtitle)
-	printLine("-", len(subtitle))
+	printLine(symbol, len(subtitle))
 }
+
+// PrintType - prints the type of a interface
+func PrintType(name string, obj interface{}) {
+	fmt.Printf("%s is type %T\n", name, obj)
+}
+
+//  ------------------------------------------------------------------------
+//     Print Messages - used via LOG package    -
+//  ------------------------------------------------------------------------
 
 // PrintMessage - prints nicely formated message
 func PrintMessage(message string) {
-	color.White("💬 " + message)
+	fmt.Println("💬 " + message)
 }
 
 // PrintSuccess - prints nicely formated success info
 func PrintSuccess(success string) {
-	color.Green("🏁 " + success)
+	color.Green("🏁 YAY - " + success)
 }
 
 // ReadLine - prints nicely formated readline input
@@ -75,8 +85,6 @@ func PrintInformation(info string) {
 func PrintDebug(debug string) {
 	color.Cyan("👉 " + debug)
 }
-
-// 	fmt.Printf("tm is type %T\n", tm)
 
 //  ------------------------------------------------------------------------
 //        Internal

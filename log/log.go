@@ -66,6 +66,26 @@ func Init(logger int, debug bool) {
 	Debug("Debug Mode is on")
 }
 
+// Message - print plain message
+func Message(s string) {
+	switch logLogger {
+	case PHUSLU_PRETTY, PHUSLU_JSON:
+		phuslu.Info().Msg(s)
+	default:
+		utils.PrintMessage(s)
+	}
+}
+
+// Success - print success message - YAY
+func Success(s string) {
+	switch logLogger {
+	case PHUSLU_PRETTY, PHUSLU_JSON:
+		phuslu.Info().Msg(s)
+	default:
+		utils.PrintSuccess(s)
+	}
+}
+
 // Info - print infolog
 func Info(s string) {
 	switch logLogger {
@@ -155,4 +175,9 @@ func CheckErrFatal(err error) {
 
 func PanicNow() {
 	panic("😱  Houston - we have a problem here ...💥")
+}
+
+func ExitNow(msg string) {
+	Message("☠ Exit☠  - " + msg)
+	os.Exit(1)
 }

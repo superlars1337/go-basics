@@ -7,3 +7,17 @@ func ExamplePrintTitle() {
 	//░ test ░
 	//░░░░░░░░
 }
+
+func ExamplePrintSubTitle() {
+	PrintSubTitle("test")
+	// Output:
+	//test
+	//░░░░
+}
+
+func ExamplePrintMessage() {
+	PrintMessage("test")
+	// Output:
+	//💬 test
+}
+

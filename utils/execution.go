@@ -13,14 +13,11 @@ func ExecuteCliCommand(cliCommand *exec.Cmd, silent bool) (err error) {
 	return err
 }
 
-// ----------------------------  Internal
+// ----------------------------  Internal --------------------------------------------------------
 
 // Run bash command
 func executeSilentCLICommandWithResultInDirectory(cliCommand *exec.Cmd, directory string, silent bool) (stdout string, stderr string, error error) {
 	cliCommand.Env = os.Environ()
-	//for key := range viper.AllSettings() {
-	//	cliCommand.Env = append(cliCommand.Env, strings.ToUpper(key)+"="+viper.GetString(key))
-	//}
 
 	var outBuffer, errBuffer bytes.Buffer
 	if silent {
